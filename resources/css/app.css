@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --neo-border: 2px solid #000000;
+    --neo-shadow: 4px 4px 0px #000000;
+    --neo-shadow-sm: 2px 2px 0px #000000;
+    --neo-shadow-lg: 8px 8px 0px #000000;
+    --neo-transition: all 0.2s ease;
+}
+
+@layer components {
+    .neo-card {
+        @apply bg-white;
+        border: var(--neo-border);
+        box-shadow: var(--neo-shadow);
+        transition: var(--neo-transition);
+    }
+
+    .neo-card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px #000000;
+    }
+
+    .neo-button {
+        @apply px-4 py-2 font-bold inline-flex items-center justify-center;
+        border: var(--neo-border);
+        box-shadow: var(--neo-shadow-sm);
+        transition: var(--neo-transition);
+        cursor: pointer;
+    }
+
+    .neo-button:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 4px 4px 0px #000000;
+    }
+
+    .neo-button:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px #000000;
+    }
+
+    .neo-input {
+        @apply px-3 py-2 w-full outline-none;
+        border: var(--neo-border);
+        box-shadow: var(--neo-shadow-sm);
+        transition: var(--neo-transition);
+    }
+
+    .neo-input:focus {
+        box-shadow: 4px 4px 0px #000000;
+        transform: translate(-1px, -1px);
+    }
+
+    .neo-badge {
+        @apply px-2 py-0.5 text-xs font-bold uppercase;
+        border: 1px solid #000;
+    }
+
+    /* Colors */
+    .bg-neo-blue { @apply bg-blue-600 text-white; }
+    .bg-neo-green { @apply bg-green-500 text-black; }
+    .bg-neo-red { @apply bg-red-600 text-white; }
+    .bg-neo-yellow { @apply bg-yellow-400 text-black; }
+    .bg-neo-orange { @apply bg-orange-600 text-white; }
+}
+
+body {
+    @apply bg-gray-50 text-black;
+    font-family: 'Inter', sans-serif;
+}
