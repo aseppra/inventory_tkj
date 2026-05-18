@@ -217,9 +217,32 @@ export default function Inventory({ items, categories, totalBorrowed, filters })
 
                     <NeoCard>
                         {selectedItems.length > 0 && (
-                            <div className="mb-4 flex items-center gap-4 bg-red-50 p-3 border-2 border-black">
-                                <span className="font-bold text-sm">{selectedItems.length} item terpilih</span>
-                                <NeoButton variant="blue" className="text-xs py-1 px-3" onClick={handleMassDelete}>Hapus Semua</NeoButton>
+                            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-4 flex items-center justify-between gap-6 min-w-[320px] md:min-w-[450px] animate-slide-up-floating">
+                                <div className="flex items-center gap-3">
+                                    <span className="bg-neo-yellow text-black border-2 border-black px-2.5 py-1 text-sm font-black tracking-wider">
+                                        {selectedItems.length}
+                                    </span>
+                                    <span className="font-black text-sm uppercase tracking-tight">item terpilih</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <button 
+                                        type="button"
+                                        onClick={() => setSelectedItems([])} 
+                                        className="text-xs font-black uppercase text-gray-500 hover:text-black transition-colors px-2 py-1"
+                                    >
+                                        Batal
+                                    </button>
+                                    <NeoButton 
+                                        variant="red" 
+                                        className="text-xs py-1.5 px-4 font-black uppercase tracking-wider flex items-center gap-2" 
+                                        onClick={handleMassDelete}
+                                    >
+                                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                        Hapus Semua
+                                    </NeoButton>
+                                </div>
                             </div>
                         )}
                         <div className="overflow-x-auto">

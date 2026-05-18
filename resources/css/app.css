@@ -68,5 +68,20 @@
 
 body {
     @apply bg-gray-50 text-black;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist Mono', monospace;
+}
+
+@keyframes slideUpFloating {
+    from {
+        transform: translate(-50%, 150px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-up-floating {
+    animation: slideUpFloating 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

@@ -15,12 +15,13 @@ export const NeoButton = ({ children, className = '', variant = 'blue', ...props
         green: 'bg-neo-green',
         red: 'bg-neo-red',
         yellow: 'bg-neo-yellow',
+        orange: 'bg-neo-orange text-white',
         white: 'bg-white text-black',
         black: 'bg-black text-white',
     };
 
     return (
-        <button className={`neo-button ${variants[variant]} ${className}`} {...props}>
+        <button className={`neo-button ${variants[variant] || 'bg-white text-black'} ${className}`} {...props}>
             {children}
         </button>
     );

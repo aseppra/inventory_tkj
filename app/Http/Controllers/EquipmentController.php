@@ -112,7 +112,10 @@ class EquipmentController extends Controller
 
     public function destroy(Item $item)
     {
-        // Delete the item (it will fail or cascade if loans exist, depending on DB schema)
+        if ($item->image) {
+            Storage::disk('public')->delete($item->image);
+        }
+
         $item->delete();
         return back()->with('success', 'Alat berhasil dihapus.');
     }
@@ -124,13 +127,15 @@ class EquipmentController extends Controller
             'ids.*' => 'exists:items,id'
         ]);
 
-        $items = Item::whereIn('id', $request->ids)->get();
+        $items = Item::whereIn('id', $request->ids)->get(['id', 'image']);
+        
         foreach ($items as $item) {
             if ($item->image) {
                 Storage::disk('public')->delete($item->image);
             }
-            $item->delete();
         }
+
+        Item::whereIn('id', $request->ids)->delete();
 
         return back()->with('success', 'Beberapa alat berhasil dihapus.');
     }
